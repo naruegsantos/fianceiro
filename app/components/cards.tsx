@@ -2,16 +2,12 @@ import { GrPowerCycle } from "react-icons/gr";
 import { GrBarChart } from "react-icons/gr";
 import { IAsset } from "./types";
 
-
-
-
 export default function Cards({assets}:{assets:IAsset[]}) {
   
   return (
     <section>
       <div className="p-4 border-white bg-sky-950 w-1/3 rounded-xl shadow-gray-800 shadow-2xl">
         <h1 className="text-3xl">Assets</h1>
-        
         <div className=" table w-full  divide-y divide-white">
           <div className="table-header-group divide-x divide-y">
             <div className="table-cell text-center border-t"></div>
@@ -40,7 +36,6 @@ export default function Cards({assets}:{assets:IAsset[]}) {
                   </span>
                 </div>
               </div>
-
             ))}
           </div>
         </div>
