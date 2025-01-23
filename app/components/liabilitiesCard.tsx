@@ -2,17 +2,17 @@ import { GrPowerCycle, GrBarChart, GrCircleAlert } from "react-icons/gr";
 
 import {ILiabilities } from "./types";
 
-export default function LiabilitiesCard({data, direction}:{data:ILiabilities[], direction?:string}){
-    data.forEach((i) => {
-        console.log(new Date(i.expiration) <= new Date());
-        console.log(new Date(i.expiration));
-        
-    })
-    
+export default function LiabilitiesCard({data}:{data:ILiabilities[]}){
+    // data.forEach((i) => {
+    //     console.log(new Date(i.expiration) <= new Date());
+    //     console.log();
+    //     // i.expiration.split("/").join("-")
+    // })
+     
     return(
-        <div className={`pt-2 self-${direction} bg-white text-black w-2/5 rounded-xl shadow-inner shadow-[rgb(55,55,55)]`}>
+        <div className={`p-4 self-end bg-white text-black w-[60%] rounded-xl shadow-inner shadow-[rgb(55,55,55)]`}>
           <h1 className="text-3xl pl-2 pb-2">Passivos</h1>
-          <div className=" table w-full  divide-y divide-white">
+          <div className=" text-xl table w-full  divide-y divide-white">
           <div className="table-header-group divide-x divide-y">
             <div className="table-cell text-center border-t"></div>
             <div className="table-cell text-center font-bold">valor</div>

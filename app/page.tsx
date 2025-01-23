@@ -48,9 +48,12 @@ const liabilitiesMock:ILiabilities[] = [
 export default function Home() {
   return (
     <>
-      <header className="shadow-md bg-[#02571F] border-b-4 border-dotted h-80 flex flex-col items-center justify-center">
-        <h1 className="text-5xl drop-shadow-lg title ease-in flex w-fit text-[#F2D4AE]">Fianceiro <FaRedhat style={{color:"#72BF6A"}}/></h1>
-        <span className="text-[]">contabilidade simples e certeira</span>
+      <header className="shadow-md bg-[#528C18] border-b-4 border-dotted h-80 flex flex-col items-center justify-center">
+        <div className="text-6xl drop-shadow-lg title ease-in flex w-fit gap-[-5rem]">
+          <h1 className="mr-[-1.5rem]">Fianceiro</h1>
+          <span className="rotate-[20deg]"><FaRedhat style={{color:"var(--hightlight)"}}/></span>
+        </div>
+        <span className="text-[#FFD591] drop-shadow-sm ">contabilidade simples e certeira</span>
       </header> 
       <main className="flex flex-col items-center mt-10">
         <Cards liabilities={liabilitiesMock} assets={assetsMock}/>

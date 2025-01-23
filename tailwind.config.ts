@@ -11,7 +11,12 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        dark:"var(--dark)",
+        hightlight: "var(--hightlight)",
+        clear: "var(--clear)",
+        shadow: "var(--shadow)"
       },
+
     },
   },
   plugins: [],

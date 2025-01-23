@@ -25,17 +25,21 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --dark:#1B661A;
+  --hightlight: #00CB27;
+  --clear: #FFD591;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: rgb(22,22,22);
-    --foreground: #ededed;
+    --background: #171717;
+    --foreground: #ffffff;
+    --shadow: rgb(55,55,55)
   }
 }
 
 body {
-  color: var(--foreground);
+  color: white;
   background: var(--background);
   /* font-family: var(--font-inter-normal); */
 }

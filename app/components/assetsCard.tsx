@@ -3,9 +3,9 @@ import { IAsset } from "./types";
 
 export default function AssetsCard({data, direction}:{data:IAsset[], direction?:string}){
     return(
-        <div className={`pt-2 self-${direction} border-white bg-[#02571F] w-2/5 rounded-xl shadow-inner shadow-[rgb(55,55,55)]`}>
-          <h1 className="text-3xl pl-2 pb-2">Assets</h1>
-          <div className=" table w-full  divide-y divide-[#0F8C3B]">
+        <div className={`p-4 self-${direction} border-white bg-dark w-[60%] rounded-xl shadow-lg shadow-shadow`}>
+          <h1 className="text-4xl pl-2 pb-2">Assets</h1>
+          <div className=" text-xl table w-full  divide-y divide-[#0F8C3B]">
             <div className="table-header-group divide-[#0F8C3B] divide-x divide-y">
                 <div className="table-cell text-center border-t border-[#0F8C3B]"></div>
                 <div className="table-cell text-center font-bold">valor</div>
@@ -21,16 +21,16 @@ export default function AssetsCard({data, direction}:{data:IAsset[], direction?:
                   }
                   </div>
                   <div className="table-cell ">
-                  <span className="flex items-center  justify-center gap-2">
-                      {i.type?
-                      "current" 
-                      : "convertible"
-                      }
-                      {i.type? 
-                      <GrPowerCycle style={{color:"rgb(0,255,0)"}}/>
-                      : <GrBarChart/>
-                      }
-                  </span>
+                    <span className="flex items-center  justify-center gap-2">
+                        {i.type?
+                        "current" 
+                        : "convertible"
+                        }
+                        {i.type? 
+                        <GrPowerCycle style={{color:"var(--hightlight)"}}/>
+                        : <GrBarChart/>
+                        }
+                    </span>
                   </div>
               </div>
               ))}

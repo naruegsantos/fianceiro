@@ -5,9 +5,9 @@ import { IAsset, ILiabilities } from "./types";
 export default function Cards({assets, liabilities}:{assets:IAsset[], liabilities:ILiabilities[]}) {
   
   return (
-    <section className="flex flex-col w-9/12">
+    <section className="flex gap-10 flex-col w-9/12">
       <AssetsCard data={assets}/>
-      <LiabilitiesCard direction="end" data={liabilities}/>
+      <LiabilitiesCard data={liabilities}/>
     </section>
   )
 }
