@@ -13,7 +13,7 @@ export default {
         foreground: "var(--foreground)",
         dark:"var(--dark)",
         hightlight: "var(--hightlight)",
-        clear: "var(--clear)",
+        light: "var(--light)",
         shadow: "var(--shadow)"
       },
 

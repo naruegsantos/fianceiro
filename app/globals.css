@@ -11,10 +11,8 @@
 @keyframes spread {
   0% {
     letter-spacing: 0px;
-    font-weight: lighter;
   } 100% {
     letter-spacing: 0.15em;
-    font-weight: normal;
   }
 }
 
@@ -27,7 +25,7 @@
   --foreground: #171717;
   --dark:#1B661A;
   --hightlight: #00CB27;
-  --clear: #FFD591;
+  --light: #FFD591;
 }
 
 @media (prefers-color-scheme: dark) {
