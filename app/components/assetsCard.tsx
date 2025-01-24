@@ -3,8 +3,8 @@ import { IAsset } from "./types";
 
 export default function AssetsCard({data, direction}:{data:IAsset[], direction?:string}){
     return(
-        <div className="flex gap-5   flex-col-reverse md:flex-row md:justify-center items-center ">
-          <div className={`p-4 self-${direction} border-white bg-dark md:w-[35%] w-[90%] rounded-xl shadow-lg shadow-shadow`}>
+        <div className="flex gap-5   flex-col-reverse lg:flex-row md:justify-center items-center ">
+          <div className={`p-4 self-${direction} border-white bg-dark lg:w-[35%] w-[90%] rounded-xl shadow-lg shadow-shadow`}>
             <h1 className="text-4xl w- pb-2">Ativos</h1>
             <div className=" table md:text-xl w-full  divide-y divide-[#0F8C3B]">
               <div className="table-header-group divide-[#0F8C3B] divide-x divide-y">

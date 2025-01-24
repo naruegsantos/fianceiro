@@ -5,11 +5,11 @@ import { ILiabilities } from "./types";
 export default function LiabilitiesCard({ data }: { data: ILiabilities[] }) {
 
   return (
-    <div className="hidden md:flex  gap-5 sch  flex-col md:flex-row md:justify-center items-center ">
+    <div className="hidden md:flex  gap-5  flex-col  justify-center place-items-center ">
       
-      <div className={`p-4 self-start text-white  border-white bg-red-500 md:w-[47%] rounded-xl shadow-lg shadow-shadow`}>
+      <div className={`p-4 py-8 text-white  border-white bg-red-500 lg:w-[60%] rounded-xl shadow-lg shadow-shadow`}>
         <h1 className="text-3xl pl-2 pb-2">Despesas</h1>
-        <div className=" text-xl table  w-full  divide-y divide-white">
+        <div className=" text-xl table  table-fixed w-full  divide-y divide-white">
           <div className="table-header-group divide-x divide-y">
             <div className="table-cell text-center border-t ">descrição</div>
             <div className="table-cell text-center font-bold ">valor</div>
@@ -25,7 +25,7 @@ export default function LiabilitiesCard({ data }: { data: ILiabilities[] }) {
                   new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(700)
                 }
               </div>
-              <div className="table-cell ">
+              <div className="table-cell text-center">
                 04/08/2025
               </div>
               <div className="table-cell ">
@@ -42,7 +42,7 @@ export default function LiabilitiesCard({ data }: { data: ILiabilities[] }) {
                   new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(900)
                 }
               </div>
-              <div className="table-cell ">
+              <div className="table-cell text-center">
                 14/01/2025
               </div>
               <div className="table-cell ">
@@ -59,7 +59,7 @@ export default function LiabilitiesCard({ data }: { data: ILiabilities[] }) {
                   new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(24.50)
                 }
               </div>
-              <div className="table-cell ">
+              <div className="table-cell text-center">
                 {new Date().toLocaleDateString("pt-BR")}
               </div>
               <div className="table-cell ">

@@ -5,11 +5,11 @@ import { ILiabilities } from "./types";
 export default function LiabilitiesCard({ data }: { data: ILiabilities[] }) {
 
   return (
-    <div className="flex gap-5 sch  flex-col md:flex-row md:justify-center items-center ">
+    <div className="flex gap-5 flex-col lg:flex-row lg:justify-center items-center ">
       <h1 className="md:text-5xl text-4xl text-wrap decoration-[5px] w-[90%] md:w-fit  ">
         Suas contas <br /> na <strong className="text-light">ponta do lápis</strong>
       </h1>
-      <div className={`p-4 md:text-xl self-center text-black  border-white bg-white md:w-[35%] w-[90%] rounded-xl shadow-lg shadow-shadow`}>
+      <div className={`p-4 md:text-xl self-center text-black  border-white bg-white lg:w-[35%] w-[90%] rounded-xl shadow-lg shadow-shadow`}>
         <h1 className="text-3xl pl-2 pb-2">Passivos</h1>
         <div className=" table table-fixed w-full  divide-y divide-white">
           <div className="table-header-group divide-x divide-y">
