@@ -18,14 +18,14 @@ export default function Home() {
         </div>
         <span className="text-light text-lg drop-shadow-sm ">contabilidade simples e certeira</span>
       </header> 
-      <main className="flex flex-col items-center mt-10">
-        <div className="w-[90%] mb-10 text-center">
+      <main className="flex flex-col items-center">
+        <div className="w-full flex flex-col gap-5 justify-center items-center h-[20rem] mb-5 text-center">
           <h1 className="text-2xl md:text-5xl">
             Não subestime a tarefa de ter uma vida financeira <strong className="text-light">saudável!</strong>
           </h1>
-          <h2 className="md:text-4xl mt-5  ">Ajudamos você com isso</h2>
+          <h2 className="md:text-4xl border-[0.4rem] border-dotted border-hightlight p-2 px-6 shadow-xl shadow-shadow  w-fit">Ajudamos você com isso</h2>
         </div>
-        <section className="flex justify-center md:justify-center my-40 gap-20 flex-wrap w-[90%]">
+        <section className="flex justify-center md:justify-center mb-40 gap-20 flex-wrap w-[90%]">
           <Link href={"/consultoria"} className="w-44  hover:scale-110 hover:hue-rotate-180 hover:bg-light h-44 flex flex-col justify-center items-center rounded-3xl font-bold text-xl bg-white transition text-black">
             <FaBrain style={{fontSize:"2rem"}}/>
             <span>consultoria</span>
