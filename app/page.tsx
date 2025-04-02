@@ -23,7 +23,7 @@ export default function Home() {
           <h1 className="text-2xl md:text-5xl">
             Não subestime a tarefa de ter uma vida financeira <strong className="text-light">saudável!</strong>
           </h1>
-          <Link href={"/signup"} className="md:text-4xl border-[0.4rem]  hover:scale-110 rounded-[1rem] hover:underline decoration-blue-500 transition border-dotted border-hightlight py-6 px-10 shadow-xl shadow-shadow  w-fit">
+          <Link href={"/signin"} className="md:text-4xl border-[0.4rem]  hover:scale-110 rounded-[1rem] hover:underline decoration-blue-500 transition border-dotted border-hightlight py-6 px-10 shadow-xl shadow-shadow  w-fit">
             Ajudamos você com isso
           </Link>
         </div>

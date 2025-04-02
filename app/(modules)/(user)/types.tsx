@@ -3,5 +3,14 @@ export interface IUser {
   name:string,
   email:string,
   password:string,
-  permission?:string
+  role:EnumUserPermission
 }
+
+export interface IUserLogin {
+  name:string,
+  email:string,
+  password:string,
+}
+
+
+export type EnumUserPermission = "GUEST" | "OPERATOR" | "ADMIN"

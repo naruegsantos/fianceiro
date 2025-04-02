@@ -18,13 +18,5 @@ export interface ILiabilities{
     expiration:string
 }
 
-export interface IRecord{
-    id:number,
-    label:string,
-    value:number,
-    date:string,
-    type: "expense" | "revenu" | "transference" | "liability",
-    cameFrom:number,
-    wentTo:number
-}   
+
 

@@ -19,56 +19,64 @@ import { z } from "zod"
 import Link from "next/link"
 import { FaEye, FaEyeSlash } from "react-icons/fa"
 import { useState } from "react"
-import { signup } from "@/app/api/(modules)/user/services"
-import { signIn } from "@/auth"
-import { redirect } from "next/navigation"
+import { IUser } from "../../types"
+
+import { signIn, signOut } from "next-auth/react"
+import Image from "next/image"
 
 const formSchema = z.object({
-  name: z.string().min(2, {message:"esse nome é muito curto"}).max(100),
-  email: z.string().email({message:"Email inválido"}),
+  emailOrName: z.string().email({message:"Email inválido"}) || z.string().min(2, {message:"esse nome é muito curto"}).max(100),
   password: z.string().refine((input:string) => /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(input), {
     message:"Uma senha segura tem ao menos 8 digitos, com maiúsculas, minúsculas numeros e caractéres especiais!"
   }),
-  role: z.enum(["GUEST", "OPERATOR", "ADMIN"])
 })
 
-export function SingupForm() {
+export function SingninpForm() {
+  const [error, setError] = useState(false)
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "Jones Jones",
-      email:"jojo@gmail.com",
+      emailOrName:"jojo@gmail.com",
       password:"123Sete69oit@",
-      role:"OPERATOR"
     },
   })
  
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    await signup(values) ? redirect("/dashboard") : alert("Já temos alguém com essas informações, tente entrar!")
+  
+    // let req = await signin({
+    //   email:values.emailOrName,
+    //   name:values.emailOrName,
+    //   password:values.password
+    // })
+
+    // console.log(req);
+    
+
+    
+
+    // if(req.status == 401) {
+    //   setError(true)
+    //   setTimeout(() => setError(false), 2000)
+    // }
   }
 
   const [showPassword, setShowPassword] = useState(false)
   return (
+    <>
+    {
+      error?
+      <div className="p-2 border border-dotted border-red-500">
+        nenhum usuário com essas informações encontrado!
+      </div>
+      : <></>
+    }
     <Form {...form} >
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-[25%] bg-dark p-4 shadow-xl shadow-shadow rounded-lg border border-shadow">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 bg-dark p-4 shadow-xl shadow-shadow rounded-lg border border-shadow">
         <FormField
           control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Nome</FormLabel>
-              <FormControl>
-                <Input placeholder="Nome completo" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="email"
+          name="emailOrName"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Email</FormLabel>
@@ -100,9 +108,14 @@ export function SingupForm() {
         />
         <div className="">
           <Button className="w-full mb-2" type="submit">confirmar</Button>
-          <Link href={"signin"}>Já tem uma conta? <span className="underline decoration-[2px]  decoration-blue-700">Entre</span></Link>
+          <Link href={"signup"}>Ainda não tem uma conta? <span className="underline decoration-[2px]  decoration-blue-700">Cadastre-se</span></Link>
+          <button onClick={() => signIn('google', {redirectTo:"/dashboard"})} className="flex w-full bg-white shadow place-items-center p-2 rounded-md text-black">
+            <Image className="w-[10%]" src={"/google.jpg"} height={200} width={200} alt="google-icon"/>
+            <span className="text-center w-[83%]" >Entre com o google</span>
+          </button>
         </div>
       </form>
     </Form>
+    </>
   )
 }
