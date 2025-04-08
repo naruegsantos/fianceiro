@@ -1,16 +1,45 @@
 "use client"
 import { IAccount } from "@/app/(modules)/(account)/types";
-import { CreateRecordDto, IRecord, RecordCategoriesClient } from "@/app/(modules)/(record)/types";
-import IRecordInput from "./recordInput";
-import { ReactNode, useState } from "react";
+import { CreateRecordDto, IRecord, RecordCategoriesClient } from "@/app/api/(modules)/record/types";
+import { ReactNode, useRef, useState } from "react";
 import { signOut } from "next-auth/react";
+import OptionsMenu from "../../../components/commum/optionsMenu";
+import { createRecord } from "@/app/api/(modules)/record/services";
+import { FaPen, FaTrash } from "react-icons/fa";
+import ConfirmModal from "@/components/commum/confirmModal";
+import ContextMenu_ from "@/components/commum/contextmenu";
+import List from "@/app/(modules)/(record)/List";
 
 export default function Dashboard({accounts, records, children}: {accounts:IAccount[], records:IRecord[], children:ReactNode}) {
   const [accountsState, setAccountsState] = useState(accounts)
   const [recordsState, setRecordsState] = useState(records)
+  const [optionsMenuState, setOptionsMenuState] = useState({
+    show:false, 
+    position:{top:"0px", left:"0px"},
+  })
 
-  function addNewRecord(data:CreateRecordDto) {
-    setRecordsState([...recordsState, {...data, id:recordsState[recordsState.length -1].id + 1}])
+  const ref = useRef<HTMLElement | null>(null);
+
+  async function addNewRecord(data:CreateRecordDto) {
+    createRecord(data)
+    setRecordsState([...recordsState, {...data, id:Math.max(...recordsState.map((i) => i.id)) + 1}])
+    console.log(accountsState);
+  }
+   function removeRecord(id:number) {
+    setRecordsState(recordsState.filter((i) => i.id != id))
+    console.log(accountsState);
+  }
+
+  const handleContextMenu = (e:any) => {
+    e.preventDefault()
+    const {pageX, pageY} = e
+    console.log({pageX, pageY});
+    
+    setOptionsMenuState({show:true, position:{top:`${pageY}px`, left:`${pageX}px`}})
+  }
+
+  const handleCloseOptionsMenu = () => {
+    setOptionsMenuState({show:false, position:{top:"0px", left:"0px"}})
   }
 
   return(
@@ -31,35 +60,7 @@ export default function Dashboard({accounts, records, children}: {accounts:IAcco
       ))}
     </section>
     <section className="flex justify-center w-full py-10">
-      <div className=" shadow-lg h-fit rounded-md border max-w-[80%]">
-        <table className="w-full divide-y ">
-          <thead>
-            <tr className="uppercase">
-              <th>título</th>
-              <th>categoria</th>
-              <th>de onde veio</th>
-              <th>pra onde foi</th>
-              <th>valor</th>
-              <th>data</th>
-            </tr>
-          </thead>
-          <tbody className="w-full divide-y">
-            {recordsState.map((i:IRecord) => (
-              <tr key={i.id} className=" h-14 odd:bg-[rgba(200,200,255,0.1)]">
-                <td className="p-2">{i.label}</td>
-                <td className="p-2 text-center">{RecordCategoriesClient[i.recordCategory]}</td>
-                <td className="p-2">{accountsState.find((a:IAccount) => a.id == i.cameFromId)?.label}</td>
-                <td className="p-2">{accountsState.find((a:IAccount) => a.id == i.wentToId)?.label}</td>
-                <td className="p-2">{i.value}</td>
-                <td className="p-2 text-center">{i.date}</td>
-              </tr>
-            ))}
-          </tbody>
-          <tfoot className="w-full max-w-full  border-t ">
-            <IRecordInput addNewRecord={addNewRecord} accounts={accountsState}/>
-          </tfoot>
-        </table>
-      </div>
+      <List accounts={accounts} rows={recordsState} addRow={addNewRecord} removeRow={removeRecord}/>
     </section>
     </>
   )

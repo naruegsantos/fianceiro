@@ -3,7 +3,7 @@ export interface IRecord {
   label:string;
   cameFromId: number,
   wentToId: number,
-  recordCategory:RecordCategories;
+  recordCategory:string;
   date:string;
   value:number;
   description?: string | null;
@@ -13,7 +13,7 @@ export interface CreateRecordDto {
   label:string;
   cameFromId: number,
   wentToId: number,
-  recordCategory:"REVENUE" | "EXPENSE" | "TRANSFERENCE" ;
+  recordCategory:string ;
   date:string;
   value:number;
   description?: string | null;

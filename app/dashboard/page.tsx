@@ -2,7 +2,6 @@ import { auth, signOut } from "@/auth"
 import { redirect } from "next/navigation"
 import { getUser, getUserData } from "../api/(modules)/user/services";
 import { IAccount } from "../(modules)/(account)/types";
-import RecordInput from "./componets/recordInput";
 import Dashboard from "./componets/dashboard";
 import Signout from "./componets/signout";
 

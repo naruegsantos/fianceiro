@@ -31,7 +31,7 @@ export async function getUser(data:{email:string}) { // REFACTOR better typing
     });
     
     const res = await req.json();
-    
+      
     return res
   } catch (error) {
     console.error(error);
