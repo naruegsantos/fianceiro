@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono,Inter } from "next/font/google";
+import { SessionProvider } from "next-auth/react"
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -28,12 +30,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${interNormal.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} ${interNormal.variable} antialiased`}
+          suppressHydrationWarning={true}
+        >
+            {children}
+        </body>
+      </html>
   );
 }
